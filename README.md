@@ -10,7 +10,7 @@ The full paper is available at: [https://arxiv.org/abs/1903.11800](https://arxiv
 ![](./pmtd.png)
 
 ## Installation
-Check [INSTALL.md](INSTALL.md) for installation instructions.
+Check [INSTALL.md](./INSTALL.md) for installation instructions.
 
 ## Trained model
 We provide trained model on ICDAR 2017 MLT dataset [here](https://drive.google.com/open?id=1kh5wXqvD1KkaSLtyEG8RUDUfSK1CHnQT) and ICDAR 2015 dataset [here](https://drive.google.com/open?id=1hI6uDaUefCrD1oYoKMdflTY6Ocl2Y46-) for downloading. Note that the result is slightly different from we reported in the paper, because PMTD is based on a private codebase, we reimplement inference code based on [maskrcnn-benchmark](https://github.com/facebookresearch/maskrcnn-benchmark).
