@@ -7,11 +7,6 @@ maskrcnn_benchmark.egg-info/
 build/
 dist/
 
-# pytorch/python/numpy formats
-*.pth
-*.pkl
-*.npy
-
 # ipython/jupyter notebooks
 *.ipynb
 **/.ipynb_checkpoints/
@@ -24,8 +19,3 @@ dist/
 
 # Pycharm editor settings
 .idea
-
-# project dirs
-/datasets
-/models
-/inference
