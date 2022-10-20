@@ -1,35 +1,36 @@
-## Installation with Docker Image
+# Installation with Docker Image
 
-Build image with defaults:
+## Hardware
 
+NVIDIA GPU (support CUDA >= 11)
+
+## Default container
+
+### Build image  
 ```bash
 nvidia-docker build . -t pmtd:v1.12.0
 ```
 
-Build image with `FORCE_CUDA` disabled:
-
+### Run image
 ```bash
-nvidia-docker build . \
--t pmtd:v1.12.0 \
---build-arg FORCE_CUDA=0
+nvidia-docker run \
+-it \
+--mount type=bind,source="$(pwd)"/output,target=/PMTD/output \
+pmtd:v1.12.0 /bin/bash
 ```
 
-Run image:
+## Jupyter notebook container
 
-```bas
-nvidia-docker run -it pmtd:v1.12.0 /bin/bash
-```
-
-Build and run image with built-in jupyter notebook(note that the password is used to log in jupyter notebook):
-
+### Build image
 ```bash
 nvidia-docker build . -f Dockerfile.jupyter \
 -t pmtd-jupyter:v1.12.0
 ```
 
+### Run image (note that the password is used to log in jupyter notebook)
 ```bash
-nvidia-docker run pmtd-jupyter:v1.12.0 -td\
--p 8888:8888\
--e PASSWORD=<password>\
--v <host-dir>:<container-dir>
+nvidia-docker run pmtd-jupyter:v1.12.0 -td \
+-p 8888:8888 \
+-e PASSWORD=<password> \
+--mount type=bind,source="$(pwd)"/output,target=/PMTD/output
 ```

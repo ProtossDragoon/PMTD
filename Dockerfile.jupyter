@@ -33,10 +33,11 @@ ENV CONDA_AUTO_UPDATE_CONDA=false
 RUN conda install -y ipython
 RUN pip install ninja yacs cython matplotlib six tqdm
 
-# Install PyTorch 1.12.0
+# Install PyTorch 1.10.1
 # https://pytorch.org/get-started/previous-versions/#linux-and-windows-22
+# check issue https://github.com/facebookresearch/maskrcnn-benchmark/issues/1340
 ARG CUDA
-RUN conda install -y pytorch==1.12.0 torchvision==0.13.0 torchaudio==0.12.0 cudatoolkit=${CUDA_WITHOUT_PATCH_VERSION} -c pytorch\
+RUN conda install -y pytorch==1.10.1 torchvision==0.11.2 torchaudio==0.10.1 cudatoolkit=${CUDA_WITHOUT_PATCH_VERSION} -c pytorch\
  && conda clean -ya
 
 # install pycocotools

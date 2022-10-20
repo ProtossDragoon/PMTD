@@ -37,8 +37,8 @@ def build_parser():
     )
     parser.add_argument(
         "--output_type",
-        default="Image",
-        choices=["Image", "Points"],
+        default="Imagefile",
+        choices=["Image", "Imagefile", "Points"],
         help="output type for predicted results"
     )
     parser.add_argument(
@@ -86,6 +86,14 @@ def main():
         cv2.resizeWindow('image', 800, 800)
         cv2.imshow('image', predictions[:, :, ::-1])
         cv2.waitKey(0)
+    elif args.output_type == "Imagefile":
+        predictions = pmtd_demo.run_on_opencv_image(image)
+        _, image_name = os.path.split(args.image_path)
+        dir = os.path.join('.', 'outputs', 'demo')
+        p = os.path.join(dir, image_name)
+        print(f'Result image saved at : {p}')
+        os.makedirs(dir, exist_ok=True)
+        cv2.imwrite(p, predictions)
     else:
         predictions = pmtd_demo.compute_prediction(image)
         top_predictions = pmtd_demo.select_top_predictions(predictions)
